@@ -1,0 +1,62 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Just Another Glitch in the Matrix</title>
+  
+  <meta name="description" content="">
+  <meta name="author" content="anotherglitchinthematrix">
+  
+  <style>
+    *{margin:0; padding:0}
+    html,body, #plane{
+      width:100%;
+      height:100%;
+    }
+    
+@keyframes bg{
+	from, to { color: hsl(324, 70%, 20%); }
+    10%      { color: hsl(360, 65%, 20%); }
+    20%      { color: hsl( 36, 80%, 20%); }
+    40%      { color: hsl(108, 65%, 20%); }
+    30%      { color: hsl( 72, 75%, 20%); }
+    50%      { color: hsl(144, 75%, 20%); }
+    60%      { color: hsl(180, 75%, 20%); }
+    70%      { color: hsl(216, 60%, 20%); }
+    80%      { color: hsl(252, 65%, 20%); }
+    90%      { color: hsl(288, 60%, 20%); }
+}
+    body{
+      background:#000;
+    }
+    
+    div#plane{
+      display:flex;
+      justify-content: center;
+      align-items: center;
+	      background-color: currentColor;
+		  background-image: linear-gradient(45deg, white 10%, rgba(0,0,0,0.4) 90%);
+        background-blend-mode: overlay;
+	  animation: bg 50s  infinite;
+    }
+
+	
+	video{
+		mix-blend-mode:exclusion;
+		/*filter: grayscale(100%);*/
+		
+	}
+  </style>
+</head>
+<body>
+
+  <div id="plane">
+	<video  width="256" autoplay loop>
+		<source src="agim.webm" type="video/webm">
+	</video>
+  </div>
+  
+</body>
+</html>
