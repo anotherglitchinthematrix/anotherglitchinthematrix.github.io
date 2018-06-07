@@ -38,6 +38,7 @@
     // }
   }
 paper.install(window); //Paper objesine erişmemizi sğalıyor Paper.path yazmaktansa path yazabiliyoruz.
+
 window.onload = function() {
     var canvas = document.getElementById('canvas');
     paper.setup(canvas);
@@ -118,29 +119,42 @@ window.onload = function() {
 
 
 
-    var c = new Spirograph(view.center, 2);
-    // c.build([
-    //     30,
-    //     [70,4],
-    //     [30,2]
-    // ]);
+    // var c = new Spirograph(view.center, 2);
+    // // c.build([
+    // //     30,
+    // //     [70,4],
+    // //     [30,2]
+    // // ]);
+    // // c.build([
+    // //     120,
+    // //     [60, 7],
+    // //     [8,3]
+    // // ]);
+
     // c.build([
     //     120,
-    //     [60, 7],
-    //     [8,3]
+    //     [60,7],
+    //     [30,3],
+    //     [30,7],
+    //     [8]
     // ]);
 
-    c.build([
-        120,
-        [60,7],
-        [30,3],
-        [30,7],
-        [8]
-    ]);
-
-    c.animate();
-    c.draw();
-
+    // c.animate();
+    // c.draw();
+    let pause = false;
     paper.view.draw();
-
+    view.onKeyDown = function(e){
+        
+        // console.log(e);
+        // if(e.key=="space"){
+        //     if(pause){
+        //         paper.view.pause();
+        //     }else{
+        //         paper.view.play();
+        //     }
+        //     pause = !pause;
+        // }
+    }
+    window.Spirograph = Spirograph;
 }
+
