@@ -7,7 +7,7 @@ window.onload = function() {
     // var tc = view.center;
     // var tc = view.center;//aşağıdaki daha basit bence. 
     var tc = new Point(view.center.x, view.center.y);
-    var n = 8;
+    var n = 12;
     
     var guide = function(n, c, d, s){
         n = Math.floor(n);
@@ -52,8 +52,15 @@ window.onload = function() {
     
     // var c = new Point([0,2]);
     // console.log(2*c.angle);
-    
-    
+    let cursor = new Group();
+    var crs = new Path.Circle({strokeColor:"#BBB", radius:4});
+    var crs_p = new Path.Circle({fillColor:"#BBB", radius:1});
+    cursor.addChild(crs);
+    cursor.addChild(crs_p);
+    var cursors = [];
+    for(let i =0; i<n; i++){
+        cursors.push(cursor.clone());
+    }
     
     //böyle oto yapmamız lazım.
     var symtool = new Tool();
@@ -69,6 +76,7 @@ window.onload = function() {
             let p = new Path({strokeColor:"black"});
             // p.rotate(45, tc)
             path.push(p);
+            // cursors[i].strokeColor = "blue";
         }
     }
     symtool.onMouseDrag = function(e){
@@ -96,18 +104,46 @@ window.onload = function() {
             // ]);
             // console.log(r,angle,p);
             path[i].add(p);
+            cursors[i].position = p;
             // console.log(path[i]);
             
         }
     }
     symtool.onMouseUp = function(){
-
+        for(let i = 0; i<n; i++){
+            // cursors[i].strokeColor = "red";
+        }
     }
+    symtool.onMouseMove = function(e){
+        var r = e.point.getDistance(tc);
+        var angle = new Point(tc.x-e.point.x, tc.y-e.point.y).angleInRadians;
+    for(let i = 0; i<n; i++){
+        let p = new Point([
+                tc.x+r*Math.cos(((i*2*Math.PI)/n)+angle),
+                tc.y+r*Math.sin(((i*2*Math.PI)/n)+angle),
+            ]);
+        cursors[i].position = p;
+        
+        }
+        cursors[n/2].children[0].strokeColor = "red";
+        cursors[n/2].children[1].fillColor = "red";
+    }
+
+    // var cursors = [];
+    // var crs = new Path.Circle({strokeColor:"red", radius:4});
+
+    // var cursor = new Tool();
+    // cursor.onMouseMove = function(e){
+    //     // crs.position = e.point;
+    //     console.log(e);
+    // }
+
     // view.on({
     //     mousedown:onMouseDown,
     //     mousedrag:onMouseDrag
     // });
     // paper.view.update()
+    // console.log(tools);
     paper.view.draw();
 
 }
