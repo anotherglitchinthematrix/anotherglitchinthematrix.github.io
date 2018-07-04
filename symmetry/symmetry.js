@@ -78,6 +78,7 @@ window.onload = function() {
             path.push(p);
             // cursors[i].strokeColor = "blue";
         }
+        cursors[n/2].strokeColor = "blue";
     }
     symtool.onMouseDrag = function(e){
         // path[0].add(e.point);
