@@ -67,6 +67,8 @@ window.onload = function() {
 
                 if(pos.x-1 <= 0 || pos.x+1>=image.width ||pos.y-1 <= 0 || pos.y+1>= image.height){
                     this.onFrame = null;
+                    // var x = project.exportSVG();
+                    // console.log(x);
                     // console.log(iter);
                     
                     
