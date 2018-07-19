@@ -1,0 +1,63 @@
+//https://en.wikipedia.org/wiki/Spirograph
+let 
+    path = new Path.Circle({center:[200,200], radius:50, strokeColor:'black'}),
+    isPaused = false
+    roulette = new Path({strokeColor:"magenta"}),
+    PI = Math.PI;
+
+
+var circle = new Path.Circle({radius:12});
+circle.strokeColor = 'red'
+
+
+Path.prototype.snapTo = function(path, degree){
+        // s=r*degree
+        //su noktada yari çapi almamizin tek yolu, bir kez "path"olusturuldu mu
+        //,üreticisine dair bütün veri yok oluyor, belki bunun için kendim bir
+        //wrapper metod yazabilirim.
+        var radius = path.bounds.width / 2;
+        //console.log(radius);
+        this.position = path.getPointAt(radius*degree);
+        console.log(path.length,50*degree);
+}
+
+
+// Path.prototype.snapTo = function(o, v, c){
+//         // v = 300;
+//         // c = c || false;
+//         // var offset = 0;
+//         //bunu yapmaz isek ilk olusturdugumuz yerde olur.
+//         this.position = o.getPointAt(0);
+        
+//         // this.onFrame = function (event) {
+//         //     this.position = o.getPointAt(offset);
+//         //   offset += event.delta*v; // speed - 150px/second
+//         //     if(offset > o.length) {offset = 0;} 
+            
+//         //     if(c){
+//         //         roulette.add(this.position);
+//         //     }
+//         // }
+// }
+
+
+
+Path.prototype.createPen = function(){
+    var circle2 = new Path.Circle(0,0,4);
+    circle2.strokeColor = 'blue';
+    circle2.fillColor = 'blue';
+    circle2.snapTo(this,12,true);
+}
+
+circle.snapTo(path,PI/2);
+
+
+function onKeyDown(event) {
+	if (event.key == 'space') {
+		istop = !istop;
+		console.log("isStopped:", istop)
+	}
+}
+
+
+// console.log(Math.PI)

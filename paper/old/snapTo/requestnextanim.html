@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        #SomeElementYouWantToAnimate{width:50px;height:50px;background:red}
+    </style>
+</head>
+<body>
+    <div id="SomeElementYouWantToAnimate"></div>
+    <script>
+            // var starttime = new Date().getTime();
+            // function anim(duration){
+            //     // console.log(e.timeStamp);
+            //     var timestamp = new Date().getTime();
+            //     var runtime = timestamp - starttime;
+            //     var progress = runtime / duration;
+            //     console.log(Math.min(progress, 1)*1000);
+            //     if(runtime < duration){
+            //         requestAnimationFrame(function(){
+            //             anim(duration);
+            //         });
+            //     }
+                
+            // }
+            
+            // anim(1000);
+            var start = null;
+    var element = document.getElementById('SomeElementYouWantToAnimate');
+    element.style.position = 'absolute';
+    
+    function step(timestamp) {
+        
+        var dur = 1000;
+      if (!start) start = timestamp;
+      var progress = ((timestamp - start) / dur) % 10;//bu beklenildiği gibi çalışmıoyr gibi, aslında çalışıyor ama çokbüyük bir sayıda kalanı hesaplamak mantıksız.
+      var  degree= (progress*360)%360;
+    //   console.log(timestamp);
+      console.log(progress);
+    //    console.log(degree);
+    //   console.log(progress, degree);
+    //   element.style.left = Math.min(progress / 10, 200) + 'px';
+        element.style.transform = `rotate(${degree}deg)`;
+    //   if (progress < 2000) {
+        window.requestAnimationFrame(step);
+    //   }
+    }
+    
+    window.requestAnimationFrame(step);
+        </script>
+</body>
+</html>
