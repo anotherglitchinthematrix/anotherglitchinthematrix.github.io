@@ -13,8 +13,8 @@ window.onload = function() {
     let goldenRatio = ((Math.sqrt(5) + 1 ) / 2);
     let iter = 0;
     // let image = new Raster("Fibonacci.jpg");
-    let image = new Raster("a.png");
-    // let image = new Raster("Leonardo_Fibonacci.png");
+    //let image = new Raster("a.png");
+     let image = new Raster("Leonardo_Fibonacci.png");
     
     image.onLoad = function(){
         console.log("~> image loaded!");
