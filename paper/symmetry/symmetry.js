@@ -7,7 +7,7 @@ window.onload = function() {
     // var tc = view.center;
     // var tc = view.center;//aşağıdaki daha basit bence. 
     var tc = new Point(view.center.x, view.center.y);
-    var n = 8;
+    var n = 16;
     
     var guide = function(n, c, d, s){
         n = Math.floor(n);
